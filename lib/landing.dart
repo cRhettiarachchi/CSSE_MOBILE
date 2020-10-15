@@ -52,6 +52,36 @@ class Landing extends StatelessWidget {
                   ),
                 ],
               ),
+
+              Row(
+                children: [
+                  Expanded(
+                    child:Container(
+                      margin: EdgeInsets.all(10),
+                      child: RaisedButton(
+                        onPressed: () {
+                          Route route = MaterialPageRoute(builder: (context) => NewOrder());
+                          Navigator.push(context, route);
+                        },
+                        child: Text('All Orders', style: TextStyle(color: Colors.white),),
+                        color: Colors.black,
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child:Container(
+                      margin: EdgeInsets.all(10),
+                      child: RaisedButton(
+                        onPressed: () {
+
+                        },
+                        child: Text('View Drafts', style: TextStyle(color: Colors.white),),
+                        color: Colors.black,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ],
           ),
         ),

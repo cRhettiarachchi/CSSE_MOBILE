@@ -1,3 +1,4 @@
+import 'package:csse/orderDetails.dart';
 import 'package:csse/services/itemService.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -267,6 +268,8 @@ class _NewOrderState extends State<NewOrder> {
                     onPressed: () {
                       print(individualItems.map((e) => e.total));
                       ItemService().purchaseOrder(globals.token, individualItems);
+                      Route route = MaterialPageRoute(builder: (context) => OrderDetails());
+                      Navigator.push(context, route);
                     },
                     child: Text(
                       'Create Purchase',
