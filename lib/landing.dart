@@ -18,13 +18,14 @@ class Landing extends StatelessWidget {
           onPressed: () => print(''),
         ),
       ),
-      body: Container(
-        padding: EdgeInsets.all(30),
-        child: Column(
-          children: [
-            Row(
-              children: [
-                Expanded(
+      body: SingleChildScrollView(
+        child: Container(
+          padding: EdgeInsets.all(30),
+          child: Column(
+            children: [
+              Row(
+                children: [
+                  Expanded(
                     child:Container(
                       margin: EdgeInsets.all(10),
                       child: RaisedButton(
@@ -36,22 +37,23 @@ class Landing extends StatelessWidget {
                         color: Colors.black,
                       ),
                     ),
-                ),
-                Expanded(
-                  child:Container(
-                    margin: EdgeInsets.all(10),
-                    child: RaisedButton(
-                      onPressed: () {
+                  ),
+                  Expanded(
+                    child:Container(
+                      margin: EdgeInsets.all(10),
+                      child: RaisedButton(
+                        onPressed: () {
 
-                      },
-                      child: Text('View Drafts', style: TextStyle(color: Colors.white),),
-                      color: Colors.black,
+                        },
+                        child: Text('View Drafts', style: TextStyle(color: Colors.white),),
+                        color: Colors.black,
+                      ),
                     ),
                   ),
-                ),
-              ],
-            ),
-          ],
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );

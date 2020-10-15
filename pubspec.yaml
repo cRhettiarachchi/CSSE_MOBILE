@@ -24,6 +24,7 @@ dependencies:
   flutter_dotenv: ^2.1.0
   fluttertoast: ^7.1.1
   jwt_decoder: ^1.0.2
+  intl: ^0.16.1
   dio: ^3.0.10
   flutter:
     sdk: flutter
