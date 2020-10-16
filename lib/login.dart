@@ -11,18 +11,24 @@ class Login extends StatelessWidget {
   Widget build(BuildContext context) {
     var email, password, token;
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Procurement'),
-        backgroundColor: Colors.black,
-      ),
       body: Container(
         padding: EdgeInsets.fromLTRB(30, 80, 30, 30),
         child: Column(
           children: <Widget>[
             Center(
               child: Text(
-                'Login',
+                'PNC PROCUREMENT',
                 style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+              ),
+            ),
+            Container(
+              padding: EdgeInsets.all(20),
+              width: 10,
+            ),
+            Center(
+              child: Text(
+                'Login',
+                style: TextStyle(fontSize: 30,),
               ),
             ),
             Center(
