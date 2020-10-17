@@ -1,3 +1,4 @@
+import 'package:csse/all-drafts.dart';
 import 'package:csse/all-orders.dart';
 import 'package:csse/login.dart';
 import 'package:csse/new-order.dart';
@@ -20,8 +21,13 @@ class Landing extends StatelessWidget {
           onPressed: () => print(''),
         ),
       ),
-      body: SingleChildScrollView(
-        child: Container(
+      body: Container(
+          decoration: BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage('assets/images/backgroud.jpg'),
+                  fit: BoxFit.cover
+              )
+          ),
           padding: EdgeInsets.all(30),
           child: Column(
             children: [
@@ -66,7 +72,7 @@ class Landing extends StatelessWidget {
                 margin: EdgeInsets.all(10),
                 child: RaisedButton(
                   onPressed: () {
-                    Route route = MaterialPageRoute(builder: (context) => AllOrders());
+                    Route route = MaterialPageRoute(builder: (context) => AllDrafts());
                     Navigator.push(context, route);
                   },
                   child: Row(
@@ -99,7 +105,6 @@ class Landing extends StatelessWidget {
             ],
           ),
         ),
-      ),
     );
   }
 }

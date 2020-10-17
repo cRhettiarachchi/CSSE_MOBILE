@@ -37,20 +37,20 @@ class ItemService {
     }
   }
 
-  purchaseOrder(String token, List allItems, String supplier, String id, String site) async {
+  purchaseOrder(String token, List allItems, String supplier, String id, String site, int total) async {
     try {
       dio.options.headers['Authorization'] = 'Bearer $token';
       return await dio.post(DotEnv().env['API_path'] + 'purchaseOrders/', data: {
         "supplier": supplier,
         "createBy": id,
         "items": allItems,
-        "referenceNumber": '1010',
-        "deliveryDetails": site
+        "deliveryDetails": site,
+        "total": total
       });
     } on DioError catch (error) {
-      print(error.response.data.toString());
+      print(error.response.toString());
       Fluttertoast.showToast(
-        msg: 'Login Failed',
+        msg: 'Purchase failed',
         backgroundColor: Color.fromARGB(255, 123, 255, 123),
         textColor: Color.fromARGB(255, 255, 255, 255),
         toastLength: Toast.LENGTH_SHORT,

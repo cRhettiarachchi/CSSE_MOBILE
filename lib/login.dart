@@ -12,6 +12,12 @@ class Login extends StatelessWidget {
     var email, password, token;
     return Scaffold(
       body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/images/backgroud.jpg'),
+            fit: BoxFit.cover
+          )
+        ),
         padding: EdgeInsets.fromLTRB(30, 80, 30, 30),
         child: Column(
           children: <Widget>[
