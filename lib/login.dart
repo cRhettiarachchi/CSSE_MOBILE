@@ -2,7 +2,6 @@ import 'package:csse/landing.dart';
 import 'package:csse/services/authenticate.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'globals/auth.dart' as globals;
 import 'package:jwt_decoder/jwt_decoder.dart';
 
@@ -73,6 +72,7 @@ class Login extends StatelessWidget {
                         globals.token = token;
                         Map<String, dynamic> decodedToken = JwtDecoder.decode(token);
                         globals.userId = decodedToken['_id'];
+                        print(token);
                         Route route = MaterialPageRoute(builder: (context) => Landing(token: token,));
                         Navigator.push(context, route);
                       }

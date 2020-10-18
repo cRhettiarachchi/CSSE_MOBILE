@@ -8,6 +8,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'globals/auth.dart' as globals;
+import 'models/Item.dart';
+import 'models/Site.dart';
+import 'models/Supplier.dart';
 
 class NewOrder extends StatefulWidget {
   @override
@@ -508,39 +511,6 @@ class _NewOrderState extends State<NewOrder> {
         ),
       ),
     );
-  }
-}
-
-class Item {
-  final String id;
-  final String name;
-
-  Item({this.id, this.name});
-
-  factory Item.fromJson(Map<String, dynamic> json) {
-    return new Item(id: json['_id'], name: json['name']);
-  }
-}
-
-class Supplier {
-  final String id;
-  final String name;
-
-  Supplier({this.id, this.name});
-
-  factory Supplier.fromJson(Map<String, dynamic> json) {
-    return new Supplier(id: json['_id'], name: json['name']);
-  }
-}
-
-class Site {
-  final String id;
-  final String name;
-
-  Site({this.id, this.name});
-
-  factory Site.fromJson(Map<String, dynamic> json) {
-    return new Site(id: json['_id'], name: json['name']);
   }
 }
 

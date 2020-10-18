@@ -39,6 +39,7 @@ class ItemService {
 
   purchaseOrder(String token, List allItems, String supplier, String id, String site, int total) async {
     try {
+      print(DotEnv().env['API_path'] + 'purchaseOrders/');
       dio.options.headers['Authorization'] = 'Bearer $token';
       return await dio.post(DotEnv().env['API_path'] + 'purchaseOrders/', data: {
         "supplier": supplier,
