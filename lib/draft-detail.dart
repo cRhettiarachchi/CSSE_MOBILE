@@ -37,6 +37,10 @@ class _DraftDetailState extends State<DraftDetail> {
   String selectedSite = '';
   String selectedItem = '';
 
+  // loading
+  bool loadingItems = false;
+  bool loadingSuppliers = false;
+
   // lists
   List<Supplier> _suppliers = [];
   List<Site> _sites = [];
@@ -79,6 +83,9 @@ class _DraftDetailState extends State<DraftDetail> {
   }
 
   Future<Null> getValue(BuildContext context) async {
+    setState(() {
+      loadingItems = true;
+    });
     ItemService().getItems(globals.token).then((data) {
       if (data != null) {
         _items = (data.data['data'])
@@ -86,6 +93,7 @@ class _DraftDetailState extends State<DraftDetail> {
             .toList();
         setState(() {
           selectedItem = _items[0].id;
+          loadingItems = false;
         });
       }
     });
@@ -192,7 +200,8 @@ class _DraftDetailState extends State<DraftDetail> {
                   decoration: BoxDecoration(
                       color: Colors.white, border: Border.all(width: 1.0)),
                   padding: EdgeInsets.all(5),
-                  child: Column(
+                  child: !loadingItems ?
+                  (Column(
                     children: [
                       Row(
                         children: [
@@ -303,7 +312,7 @@ class _DraftDetailState extends State<DraftDetail> {
                         ],
                       ),
                     ],
-                  ),
+                  )) : null,
                 ),
                 Container(
                   margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
