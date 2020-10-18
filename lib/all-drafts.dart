@@ -1,11 +1,9 @@
 import 'package:csse/draft-detail.dart';
-import 'package:csse/new-order.dart';
-import 'package:csse/orderDetails.dart';
 import 'package:csse/services/drafts.dart';
-import 'package:csse/services/itemService.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'globals/auth.dart' as globals;
+import 'models/Order.dart';
 
 class AllDrafts extends StatefulWidget {
   @override
@@ -145,18 +143,3 @@ class _AllDrafts extends State<AllDrafts> {
   }
 }
 
-class Order {
-  final String id;
-  final String date;
-  final int total;
-
-  Order({this.id, this.date, this.total});
-
-  factory Order.fromJson(Map<String, dynamic> json) {
-    return new Order(
-      id: json['_id'],
-      date: json['date'],
-      total: json['total'],
-    );
-  }
-}
