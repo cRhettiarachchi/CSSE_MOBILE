@@ -5,11 +5,13 @@ import 'package:csse/services/siteService.dart';
 import 'package:csse/services/suppliers.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 // Globals
 import 'globals/auth.dart' as globals;
 
 // Model imports
+import 'landing.dart';
 import 'models/Item.dart';
 import 'models/Site.dart';
 import 'models/Supplier.dart';
@@ -51,11 +53,9 @@ class _DraftDetailState extends State<DraftDetail> {
   ///
   /// Method to get all drafts
   Future<Null> getDraft(BuildContext context) async {
-    print(id);
     DraftService().getDraft(globals.token, id).then((data) {
       if (data != null) {
         setState(() {
-          print(id);
           selectedItems = (data.data['data']['items'])
               .map<IndividualItem>((item) => IndividualItem.fromJson(item))
               .toList();
@@ -285,7 +285,6 @@ class _DraftDetailState extends State<DraftDetail> {
                                   .getItem(globals.token, selectedItem)
                                   .then((data) {
                                 if (data != null) {
-                                  print(data.data['data']);
 
                                   selectedValue = new IndividualItem(
                                       name: data.data['data']['name'],
@@ -428,41 +427,23 @@ class _DraftDetailState extends State<DraftDetail> {
                             fontSize: 20, fontWeight: FontWeight.bold))
                   ],
                 )),
-                new Container(
-                  margin: EdgeInsets.fromLTRB(0, 10, 0, 10),
-                  child: RaisedButton(
-                    onPressed: () {
-                      ItemService()
-                          .purchaseOrder(
-                              globals.token,
-                              selectedItems,
-                              selectedSupplier,
-                              globals.userId,
-                              selectedSite,
-                              total)
-                          .then((data) {
-                        if (data != null) {
-                          print(data.data['newPurchaseOrder']);
-                          // Route route = MaterialPageRoute(
-                          //     builder: (context) => OrderDetails(
-                          //         orderId: data.data['newPurchaseOrder']
-                          //         ['_id']));
-                          // Navigator.push(context, route);
-                        }
-                      });
-                    },
-                    child: total > 100000
-                        ? (Text(
-                            'Request Permission',
-                            style: TextStyle(color: Colors.white),
-                          ))
-                        : (Text(
-                            'Create Purchase',
-                            style: TextStyle(color: Colors.white),
-                          )),
-                    color: Colors.black,
+                RaisedButton(
+                  onPressed: () {
+
+                    Fluttertoast.showToast(
+                      msg: 'Order created',
+                      toastLength: Toast.LENGTH_SHORT,
+                    );
+                    Route route = MaterialPageRoute(
+                        builder: (context) => Landing(token: ''));
+                    Navigator.push(context, route);
+                  },
+                  child: Text(
+                    'Create Purchase',
+                    style: TextStyle(color: Colors.white),
                   ),
-                ),
+                  color: Colors.black,
+                )
               ],
             ),
           ),

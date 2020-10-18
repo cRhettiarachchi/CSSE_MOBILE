@@ -72,6 +72,7 @@ class Login extends StatelessWidget {
                         globals.token = token;
                         Map<String, dynamic> decodedToken = JwtDecoder.decode(token);
                         globals.userId = decodedToken['_id'];
+                        print(token);
                         Route route = MaterialPageRoute(builder: (context) => Landing(token: token,));
                         Navigator.push(context, route);
                       }
